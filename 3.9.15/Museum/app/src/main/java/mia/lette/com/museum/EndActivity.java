@@ -19,7 +19,9 @@ import mia.lette.com.museum.zxing.client.android.CaptureActivity;
 
 @SuppressWarnings("deprecation")
 public class EndActivity extends Activity implements OnClickListener {
-	
+	/**
+	 * Test geht es???? ???????
+	 */
 	Intent intentQuest;
 	Intent intentScan;
 	Intent intentPuzzle;
