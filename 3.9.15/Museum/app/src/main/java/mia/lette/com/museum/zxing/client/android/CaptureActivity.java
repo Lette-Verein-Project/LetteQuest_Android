@@ -524,9 +524,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     }catch (NumberFormatException e){
       fragezahl = 1;
     }
-
-
-    ueberpruefung(""+displayContents.charAt(0),fragezahl,(int) displayContents.charAt(4) -48, (int) displayContents.charAt(6) -48);
+    ueberpruefung("" + displayContents.charAt(0), fragezahl, (int) displayContents.charAt(4) - 48, (int) displayContents.charAt(6) - 48);
       SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 if(prefs.getBoolean("ueberpruefung",false) == false){
     return;
@@ -717,8 +715,10 @@ cameraManager.startPreview();
    * @return
    */
   public void ueberpruefung(String fragentyp,int frage,int raum,int stockwerk){
-      if(fragentyp == "p"|| fragentyp == "t") {
-          if (fragentyp == "p") {
+      Log.d("pruefen","tada" + fragentyp);
+      if(fragentyp.equals("p") || fragentyp.equals("t")) {
+
+          if (fragentyp.equals("p")) {
               pref = getSharedPreferences("questDaten", MODE_APPEND);
               pref.edit().putBoolean("prefAuslesen", false).commit();
               SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
