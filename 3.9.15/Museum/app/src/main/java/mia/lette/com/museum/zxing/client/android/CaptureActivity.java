@@ -730,7 +730,7 @@ cameraManager.startPreview();
                   i += 3;
               }
           }
-          if (fragentyp == "t") {
+          if (fragentyp.equals("t")) {
               pref = getSharedPreferences("questDaten", MODE_APPEND);
               pref.edit().putBoolean("prefAuslesen", true).commit();
               SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
