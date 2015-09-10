@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="mia.lette.com.museum.MainActivity">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:id="@+id/infoLayout" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:text="New Text"
+            android:id="@+id/textView3" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="170dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Zurück"
+            android:id="@+id/zurueckVonInfoBtn" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:id="@+id/AnleitungsLayout">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:text="New Text"
+            android:id="@+id/textView2" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="170dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Zurück"
+            android:id="@+id/zurueckVonAnleitungBtn" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:id="@+id/startLayout">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="-5dp">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:src="@drawable/lettelogo"
+                />
+            <TextView
+                android:layout_width="91dp"
+                android:layout_height="match_parent"
+                android:gravity="center"/>
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:src="@drawable/museumlogo"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:src="@drawable/quizlogo"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Willkommen"
+                android:textSize="30dp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/startBtn"
+            android:text="Start"
+            android:enabled="false"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text=" ? "
+                android:id="@+id/anleitungBtn"
+                android:gravity="center"/>
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text=""
+                android:ems="10"
+                android:id="@+id/nameText"
+                android:gravity="center"/>
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text=" ! "
+                android:id="@+id/infoBtn"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/bestaetigenBtn"
+            android:text="Namen bestätigen"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+        <Button
+            android:layout_marginTop="15dp"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/mitwirkendeBtn"
+            android:text="Mitwirkende"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

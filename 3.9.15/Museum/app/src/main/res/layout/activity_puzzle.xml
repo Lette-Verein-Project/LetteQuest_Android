@@ -1,0 +1,142 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="mia.lette.com.museum.PuzzleActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:id="@+id/puzzleLayout">
+        <TextView
+            android:id="@+id/punkteText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Punkte: "
+            android:layout_gravity="right"
+            />
+
+        <ImageView
+            android:layout_width="81dp"
+            android:layout_height="80dp"
+            android:id="@+id/puzzleobenlinksImage"
+            android:layout_gravity="left|top"
+            android:src="@drawable/puzzleobenlinks"
+            android:layout_marginLeft="80dp"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/puzzleobenrechtsImage"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/puzzleobenrechts"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="33dp"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:id="@+id/puzzlemittelinksImage"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="65dp"
+            android:layout_marginBottom="14dp"
+            android:src="@drawable/puzzlemittelinks"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:layout_width="84dp"
+            android:layout_height="83dp"
+            android:id="@+id/puzzlemitterechtsImage"
+            android:layout_gravity="center"
+            android:layout_marginLeft="26dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/puzzlemitterechts"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:layout_width="89dp"
+            android:layout_height="89dp"
+            android:id="@+id/puzzleuntenlinksImage"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="48dp"
+            android:src="@drawable/puzzleuntenlinks"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:layout_width="79dp"
+            android:layout_height="79dp"
+            android:layout_gravity="center"
+            android:id="@+id/puzzleuntenrechtsImage"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/puzzleuntenrechts"
+            android:visibility="invisible"
+            />
+
+    </FrameLayout>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Quest"
+        android:id="@+id/questBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Puzzle"
+        android:id="@+id/puzzleBtn"
+        android:layout_alignBottom="@+id/questBtn"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Map"
+        android:id="@+id/mapBtn"
+        android:layout_alignBottom="@+id/puzzleBtn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="left|bottom"
+        android:layout_below="@+id/puzzleLayout"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/puzzleLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/kleinerGewinnBtn"
+            android:text="kleiner Gewinn"
+            android:enabled="false"/>
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/gewinnspielBtn"
+            android:text="Gewinnspiel"
+            android:enabled="false"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
