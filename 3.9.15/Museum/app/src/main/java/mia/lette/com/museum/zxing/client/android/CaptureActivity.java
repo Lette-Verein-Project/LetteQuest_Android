@@ -515,16 +515,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
       //To do:
     String frage = ""+displayContents.charAt(2) + displayContents.charAt(3) ;
     int fragezahl = 1;
-    try{
-      fragezahl = Integer.parseInt(frage);
-    }catch (NumberFormatException e){
-      fragezahl = 1;
-    }
-    try{
-      int stockwerk = (int) displayContents.charAt(4) - 48;
-    }catch (NumberFormatException e){
-      fragezahl = 1;
-    }
+    parsingUeberpruefung(displayContents);
+
     ueberpruefung("" + displayContents.charAt(0), fragezahl, (int) displayContents.charAt(4) - 48, (int) displayContents.charAt(6) - 48);
       SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 if(prefs.getBoolean("ueberpruefung",false) == false){
@@ -739,23 +731,55 @@ cameraManager.startPreview();
           }
       }
     else {
-      Context context = getApplicationContext();
-      CharSequence text = "Bitte nur die Qr Codes aus dem Ephraim Palais benutzen";
-      int duration = Toast.LENGTH_LONG;
-      Toast toast = Toast.makeText(context, text, duration);
-      toast.show();
-      onPause();
-      Runnable r = new Runnable() {
-        @Override
-        public void run() {
-
-        }
-      };
-      Handler mHandler = new Handler();
-      mHandler.postDelayed(r, 100);
-      onResume();
-          SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-          prefs.edit().putBoolean("ueberpruefung",false).commit();
+      qrCodestimmtNicht();
     }
+  }
+
+
+  public void parsingUeberpruefung(CharSequence displayText){
+    String frage = ""+displayText.charAt(2) + displayText.charAt(3) ;
+    String stockwerk = ""+displayText.charAt(5) + displayText.charAt(6) ;
+    String raum = ""+displayText.charAt(5) + displayText.charAt(6) ;
+    int zahl = 1;
+    try{
+      zahl = Integer.parseInt(frage);
+    }catch (NumberFormatException e){
+      qrCodestimmtNicht();
+      return;
+    }
+    try{
+      zahl = Integer.parseInt(stockwerk);
+    }catch (NumberFormatException e){
+      qrCodestimmtNicht();
+      return;
+    }
+    try{
+      zahl = Integer.parseInt(raum);
+    }catch (NumberFormatException e){
+      qrCodestimmtNicht();
+      return;
+    }
+
+
+  }
+
+  public void qrCodestimmtNicht(){
+    Context context = getApplicationContext();
+    CharSequence text = "Bitte nur die Qr Codes aus dem Ephraim Palais benutzen";
+    int duration = Toast.LENGTH_LONG;
+    Toast toast = Toast.makeText(context, text, duration);
+    toast.show();
+    onPause();
+    Runnable r = new Runnable() {
+      @Override
+      public void run() {
+
+      }
+    };
+    Handler mHandler = new Handler();
+    mHandler.postDelayed(r, 100);
+    onResume();
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+    prefs.edit().putBoolean("ueberpruefung",false).commit();
   }
 }
