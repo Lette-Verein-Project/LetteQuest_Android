@@ -102,15 +102,8 @@
         android:background="@color/transparent"
         android:text="@string/msg_default_status"
         android:textColor="@color/status_text"
-        android:textSize="14sp"/>
-
-
-    <Button
-        android:id="@+id/cameraButton"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:text="Kamera aus" />
+        android:textSize="30sp"
+        android:gravity="center" />
 
 
 </FrameLayout>

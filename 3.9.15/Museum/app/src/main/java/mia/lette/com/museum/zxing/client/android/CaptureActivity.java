@@ -126,7 +126,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   private BeepManager beepManager;
   ArrayList<Quest> myDataP = null;
   ArrayList<Quest> myDataT = null;
-  public Button camerabtn;
+
 
   private final DialogInterface.OnClickListener aboutListener =
       new DialogInterface.OnClickListener() {
@@ -155,7 +155,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     super.onCreate(icicle);
 
 
-      Log.d("haha", "wieso" + camerabtn);
+
 
 
     myDataP = (ArrayList<Quest>) this.getIntent().getSerializableExtra("pPassQ");
@@ -169,8 +169,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     Window window = getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     setContentView(R.layout.activity_einscann);
-      camerabtn = (Button) this.findViewById(R.id.cameraButton);
-      camerabtn.setOnClickListener(this);
+
+
 
     hasSurface = false;
     inactivityTimer = new InactivityTimer(this);
@@ -336,10 +336,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         .setIcon(android.R.drawable.ic_menu_recent_history);
     menu.add(Menu.NONE, SETTINGS_ID, Menu.NONE, R.string.menu_settings)
         .setIcon(android.R.drawable.ic_menu_preferences);
-    menu.add(Menu.NONE, HELP_ID, Menu.NONE, R.string.menu_help)
-        .setIcon(android.R.drawable.ic_menu_help);
-    menu.add(Menu.NONE, ABOUT_ID, Menu.NONE, R.string.menu_about)
-        .setIcon(android.R.drawable.ic_menu_info_details);
+
     return true;
   }
 
@@ -365,7 +362,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         builder.setTitle(getString(R.string.title_about) + versionName);
         builder.setMessage(getString(R.string.msg_about) + "\n\n" + getString(R.string.zxing_url));
         builder.setIcon(R.drawable.launcher_icon);
-        builder.setPositiveButton(R.string.button_open_browser, aboutListener);
         builder.setNegativeButton(R.string.button_cancel, null);
         builder.show();
         break;
@@ -524,6 +520,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     }catch (NumberFormatException e){
       fragezahl = 1;
     }
+    try{
+      int stockwerk = (int) displayContents.charAt(4) - 48;
+    }catch (NumberFormatException e){
+      fragezahl = 1;
+    }
     ueberpruefung("" + displayContents.charAt(0), fragezahl, (int) displayContents.charAt(4) - 48, (int) displayContents.charAt(6) - 48);
       SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 if(prefs.getBoolean("ueberpruefung",false) == false){
@@ -670,7 +671,7 @@ if(prefs.getBoolean("ueberpruefung",false) == false){
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setTitle(getString(R.string.app_name));
     builder.setMessage(getString(R.string.msg_camera_framework_bug));
-    builder.setPositiveButton(R.string.button_ok, new FinishListener(this));
+
     builder.setOnCancelListener(new FinishListener(this));
     builder.show();
   }
@@ -707,7 +708,7 @@ cameraManager.startPreview();
   }
 
   /**
-   * überprüft ob die eingescannten daten zu gebrauchen sind
+   * ï¿½berprï¿½ft ob die eingescannten daten zu gebrauchen sind
    * @param fragentyp
    * @param frage
    * @param raum
