@@ -740,51 +740,57 @@ cameraManager.startPreview();
 
 
   public void parsingUeberpruefung(CharSequence displayText){
+if(displayText.length() != 9) {
+    Log.d("charFehler", "tada");
+    qrCodestimmtNicht();
+    return;
+}
 
-      for(int t = 0; t < 9; t++){
-          Log.d("charFehler","wieso");
-          if(displayText.charAt(t) == '\u0000'){
-              Log.d("charFehler","wirklich");
-              qrCodestimmtNicht();
-            return ;
-          }
-      }
-      if(displayText.charAt(2) == ' ' || displayText.charAt(5) == ' ' || displayText.charAt(8) == ' ' ){
-          Log.d("parsingFehlrt","Aha");
-          qrCodestimmtNicht();
-          return;
-      }
-    String frage = ""+displayText.charAt(2) + displayText.charAt(3) ;
-    String stockwerk = ""+displayText.charAt(5) + displayText.charAt(6) ;
-    String raum = ""+displayText.charAt(8) + displayText.charAt(9) ;
+    for (int t = 0; t < 9; t++) {
+        Log.d("charFehler", "wieso");
+        if (displayText.charAt(t) == '\u0000') {
+            Log.d("charFehler", "wirklich");
+            qrCodestimmtNicht();
+            return;
+        }
+    }
+    if (displayText.charAt(2) == ' ' || displayText.charAt(5) == ' ' || displayText.charAt(8) == ' ') {
+        Log.d("parsingFehlrt", "Aha");
+        qrCodestimmtNicht();
+        return;
+    }
+    String frage = "" + displayText.charAt(2) + displayText.charAt(3);
+    String stockwerk = "" + displayText.charAt(5) + displayText.charAt(6);
+    String raum = "" + displayText.charAt(8) + displayText.charAt(9);
     int zahl = 1;
-      Log.d("parsingFehlrt",""+displayText.charAt(2));
-      if(displayText.charAt(2) == ' ' || displayText.charAt(5) == ' ' || displayText.charAt(8) == ' ' ){
-          Log.d("parsingFehlrt","Aha");
-          qrCodestimmtNicht();
-          return;
-      }
-    try{
-      zahl = Integer.parseInt(frage);
-    }catch (NumberFormatException e){
-      Log.d("parsingFehlrt","Die Frage");
-      qrCodestimmtNicht();
-      return;
+    Log.d("parsingFehlrt", "" + displayText.charAt(2));
+    if (displayText.charAt(2) == ' ' || displayText.charAt(5) == ' ' || displayText.charAt(8) == ' ') {
+        Log.d("parsingFehlrt", "Aha");
+        qrCodestimmtNicht();
+        return;
     }
-    try{
-      zahl = Integer.parseInt(stockwerk);
-    }catch (NumberFormatException e){
-      Log.d("parsingFehlrt","Das Stockwerk");
-      qrCodestimmtNicht();
-      return;
+    try {
+        zahl = Integer.parseInt(frage);
+    } catch (NumberFormatException e) {
+        Log.d("parsingFehlrt", "Die Frage");
+        qrCodestimmtNicht();
+        return;
     }
-    try{
-      zahl = Integer.parseInt(raum);
-    }catch (NumberFormatException e){
-      Log.d("parsingFehlrt","Der Raum");
-      qrCodestimmtNicht();
-      return;
+    try {
+        zahl = Integer.parseInt(stockwerk);
+    } catch (NumberFormatException e) {
+        Log.d("parsingFehlrt", "Das Stockwerk");
+        qrCodestimmtNicht();
+        return;
     }
+    try {
+        zahl = Integer.parseInt(raum);
+    } catch (NumberFormatException e) {
+        Log.d("parsingFehlrt", "Der Raum");
+        qrCodestimmtNicht();
+        return;
+    }
+
       SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
       prefs.edit().putBoolean("ueberpruefung",true).commit();
 
