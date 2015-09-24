@@ -740,17 +740,19 @@ cameraManager.startPreview();
 
 
   public void parsingUeberpruefung(CharSequence displayText){
-      if(displayText.charAt(2) == ' ' || displayText.charAt(5) == ' ' || displayText.charAt(8) == ' ' ){
-          Log.d("parsingFehlrt","Aha");
-          qrCodestimmtNicht();
-          return;
-      }
-      for(int a = 0; a == 9; a++){
-          if(displayText.charAt(a) == '\u0000'){
+
+      for(int t = 0; t < 9; t++){
+          Log.d("charFehler","wieso");
+          if(displayText.charAt(t) == '\u0000'){
               Log.d("charFehler","wirklich");
               qrCodestimmtNicht();
             return ;
           }
+      }
+      if(displayText.charAt(2) == ' ' || displayText.charAt(5) == ' ' || displayText.charAt(8) == ' ' ){
+          Log.d("parsingFehlrt","Aha");
+          qrCodestimmtNicht();
+          return;
       }
     String frage = ""+displayText.charAt(2) + displayText.charAt(3) ;
     String stockwerk = ""+displayText.charAt(5) + displayText.charAt(6) ;
