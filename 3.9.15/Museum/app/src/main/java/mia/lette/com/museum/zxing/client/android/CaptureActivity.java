@@ -515,13 +515,16 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
       //To do:
     String frage = ""+displayContents.charAt(2) + displayContents.charAt(3) ;
     int fragezahl = 1;
-    parsingUeberpruefung(displayContents);
-
-    ueberpruefung("" + displayContents.charAt(0), fragezahl, (int) displayContents.charAt(4) - 48, (int) displayContents.charAt(6) - 48);
+      parsingUeberpruefung(displayContents);
       SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-if(prefs.getBoolean("ueberpruefung",false) == false){
-    return;
-}
+      if(prefs.getBoolean("ueberpruefung",false) == false){
+          Log.d("parsingFehlrt","Why");
+          return;
+      }
+      ueberpruefung("" + displayContents.charAt(0), fragezahl, (int) displayContents.charAt(4) - 48, (int) displayContents.charAt(6) - 48);
+
+
+
     QR_Code qrCode = new QR_Code(""+displayContents.charAt(0),fragezahl, (int) displayContents.charAt(4) -48, (int) displayContents.charAt(6) -48);
 
       Intent fragenScreen = new Intent(this, QuestActivity.class);
@@ -737,29 +740,51 @@ cameraManager.startPreview();
 
 
   public void parsingUeberpruefung(CharSequence displayText){
+      if(displayText.charAt(2) == ' ' || displayText.charAt(5) == ' ' || displayText.charAt(8) == ' ' ){
+          Log.d("parsingFehlrt","Aha");
+          qrCodestimmtNicht();
+          return;
+      }
+      for(int a = 0; a == 9; a++){
+          if(displayText.charAt(a) == '\u0000'){
+              Log.d("charFehler","wirklich");
+              qrCodestimmtNicht();
+            return ;
+          }
+      }
     String frage = ""+displayText.charAt(2) + displayText.charAt(3) ;
     String stockwerk = ""+displayText.charAt(5) + displayText.charAt(6) ;
-    String raum = ""+displayText.charAt(5) + displayText.charAt(6) ;
+    String raum = ""+displayText.charAt(8) + displayText.charAt(9) ;
     int zahl = 1;
+      Log.d("parsingFehlrt",""+displayText.charAt(2));
+      if(displayText.charAt(2) == ' ' || displayText.charAt(5) == ' ' || displayText.charAt(8) == ' ' ){
+          Log.d("parsingFehlrt","Aha");
+          qrCodestimmtNicht();
+          return;
+      }
     try{
       zahl = Integer.parseInt(frage);
     }catch (NumberFormatException e){
+      Log.d("parsingFehlrt","Die Frage");
       qrCodestimmtNicht();
       return;
     }
     try{
       zahl = Integer.parseInt(stockwerk);
     }catch (NumberFormatException e){
+      Log.d("parsingFehlrt","Das Stockwerk");
       qrCodestimmtNicht();
       return;
     }
     try{
       zahl = Integer.parseInt(raum);
     }catch (NumberFormatException e){
+      Log.d("parsingFehlrt","Der Raum");
       qrCodestimmtNicht();
       return;
     }
-
+      SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+      prefs.edit().putBoolean("ueberpruefung",true).commit();
 
   }
 

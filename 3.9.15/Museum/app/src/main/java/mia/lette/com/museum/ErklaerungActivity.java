@@ -221,11 +221,12 @@ int i = 0;
                 mapIntent.putExtra("tPassQ", myDataT);
 
 
-                publishProgress(100);
+
                 progress = 100;
             } catch (XmlPullParserException e) {
                 Log.i("haha", "Exception parse mit number xml :" + e.getColumnNumber() + "Line NUmber: " + e.getLineNumber());
                 Log.i("haha", "Exception parse xml :" + e);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
